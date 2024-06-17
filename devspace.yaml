@@ -48,15 +48,21 @@ dev:
   app:
     # Search for the container that runs this image
     imageSelector: my-image-registry.tld/username/app
+    
+    # Make sure pod is sleeping
+    command: ["sh", "-c", "tail -f /dev/null"]
+
     # Replace the container image with this dev-optimized image (allows to skip image building during development)
     devImage: harbor.alanshomelab.com/devspace/python:docker-3.8
     # Sync files between the local filesystem and the development container
     sync:
       # mapping local dir to image workdir
-      - path: ./
-    # Open a terminal and use the following command to start it
-    terminal:
-      command: ./devspace_start.sh
+      - path: ./:/app
+
+    # Open a terminal and use the following command to start it (also make sure pod is sleeping)
+    #terminal:
+    #  command: ./devspace_start.sh
+    
     # Inject a lightweight SSH server into the container (so your IDE can connect to the remote dev env)
     ssh:
       enabled: true
