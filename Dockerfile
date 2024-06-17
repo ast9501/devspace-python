@@ -1,3 +1,7 @@
-FROM docker.io/python:3.8.19-alpine
+FROM docker.io/python:3.8.19-slim-bullseye
 
-RUN apk add vim git
+RUN apt update && \
+    apt install -y vim git bash openssh-server && \
+    mkdir /app
+
+WORKDIR /app
