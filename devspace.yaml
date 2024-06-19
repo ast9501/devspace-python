@@ -61,6 +61,7 @@ dev:
         printLogs: true
         excludePaths: 
           - .venv/
+          - .ruff_cache/
         #polling: true
         waitInitialSync: false
       - path: "${DEVSPACE_USER_HOME}/.ssh/:/root/.ssh"
