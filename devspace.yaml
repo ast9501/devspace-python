@@ -58,6 +58,20 @@ dev:
     sync:
       # mapping local dir to image workdir
       - path: ./:/app
+        printLogs: true
+        excludePaths: 
+          - .venv/
+        #polling: true
+        waitInitialSync: false
+      - path: "${DEVSPACE_USER_HOME}/.ssh/:/root/.ssh"
+        printLogs: true
+        polling: true
+        waitInitialSync: true
+      - path: "${DEVSPACE_USER_HOME}/.gitconfig:/root/.gitconfig"
+        printLogs: true
+        waitInitialSync: true
+        polling: true
+        file: true
 
     # Open a terminal and use the following command to start it (also make sure pod is sleeping)
     #terminal:
