@@ -25,7 +25,7 @@ pipelines:
 # We recommend to skip image building during development (devspace dev) as much as possible
 images:
   app:
-    image: harbor.alanshomelab.com/devspace/python:docker-3.8
+    image: alan0415/python:docker-3.8
     dockerfile: ./Dockerfile
 
 # This is a list of `deployments` that DevSpace can create for this project
@@ -53,7 +53,7 @@ dev:
     command: ["sh", "-c", "tail -f /dev/null"]
 
     # Replace the container image with this dev-optimized image (allows to skip image building during development)
-    devImage: harbor.alanshomelab.com/devspace/python:docker-3.8
+    devImage: docker.io/alan0415/python:docker-3.8
     # Sync files between the local filesystem and the development container
     sync:
       # mapping local dir to image workdir
